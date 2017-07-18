@@ -1,6 +1,5 @@
 package com.hm.proguarddemo;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +12,7 @@ import com.hm.proguarddemo.util.Utils;
 
 import org.litepal.tablemanager.Connector;
 
-public class MainActivity extends AppCompatActivity implements MyFragment.OnFragmentInteractionListener{
+public class MainActivity extends AppCompatActivity {
 
     private String toastTip = "toast in MainActivity";
 
@@ -23,7 +22,7 @@ public class MainActivity extends AppCompatActivity implements MyFragment.OnFrag
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment, new MyFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.fragment, MyFragment.newInstance()).commit();
         button = (Button) findViewById(R.id.btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +48,4 @@ public class MainActivity extends AppCompatActivity implements MyFragment.OnFrag
         System.out.println(logMessage);
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
 }
